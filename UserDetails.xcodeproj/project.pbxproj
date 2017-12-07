@@ -414,7 +414,7 @@
 				DEVELOPMENT_TEAM = J69864QQCS;
 				INFOPLIST_FILE = UserDetails/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.webdunia.p2px;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "f689ffeb-fe55-4514-a4c4-7e0db55dd663";
 				PROVISIONING_PROFILE_SPECIFIER = P2Px_Dev_13Feb;
@@ -432,7 +432,7 @@
 				DEVELOPMENT_TEAM = J69864QQCS;
 				INFOPLIST_FILE = UserDetails/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.webdunia.p2px;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "f689ffeb-fe55-4514-a4c4-7e0db55dd663";
 				PROVISIONING_PROFILE_SPECIFIER = P2Px_Dev_13Feb;
