@@ -95,6 +95,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    // MARK: - Database operation Methods
+
     func getDataFromDB() {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -124,6 +126,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    // MARK: - Action Methods
+
     @IBAction func btnAddClicked(_ sender: Any) {
         let addUpdateVCLR : AddUpdateViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddUpdateViewController") as! AddUpdateViewController
         addUpdateVCLR.isUpdate = false

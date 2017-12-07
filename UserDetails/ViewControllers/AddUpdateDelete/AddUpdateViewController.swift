@@ -57,6 +57,8 @@ class AddUpdateViewController: UIViewController, UIImagePickerControllerDelegate
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Action Methods
+    
     @IBAction func btnSaveUpdateClicked(_ sender: Any) {
         
         if check(forBlanks: txtFieldName) {
@@ -76,6 +78,8 @@ class AddUpdateViewController: UIViewController, UIImagePickerControllerDelegate
         }
     }
     
+    // MARK: - Database operation Methods
+
     func save(name: String , email: String, others: String) {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -143,20 +147,8 @@ class AddUpdateViewController: UIViewController, UIImagePickerControllerDelegate
             print(error)
         }
     }
-    
-    func configureImageView() {
-        
-        imgUserImg.layer.cornerRadius = imgUserImg.frame.size.width / 2
-        imgUserImg.layer.borderWidth = 3.0
-        imgUserImg.layer.borderColor = UIColor.lightGray.cgColor
-        
-        tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddUpdateViewController.handleTap(_:)))
-        tapGesture.delegate = self
-        tapGesture.numberOfTapsRequired = 1
-        tapGesture.numberOfTouchesRequired = 1
-        
-        imgUserImg.addGestureRecognizer(tapGesture)
-    }
+
+    // MARK: - UIGestureRecognizerDelegate Methods
 
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         
@@ -188,28 +180,9 @@ class AddUpdateViewController: UIViewController, UIImagePickerControllerDelegate
             
         }
     }
-
-    func check(forBlanks textfield: UITextField) -> Bool {
-        let rawString: String? = textfield.text
-        let whitespace = CharacterSet.whitespacesAndNewlines
-        let trimmed: String? = rawString?.trimmingCharacters(in: whitespace)
-        if (trimmed?.count ?? 0) == 0 {
-            return true
-        }
-        else {
-            return false
-        }
-    }
-    
-    func check(forValidEmail textfield: UITextField) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        print(emailTest.evaluate(with: textfield.text!))
-        return emailTest.evaluate(with: textfield.text!)
-    }
     
     // MARK: - UIImagePickerControllerDelegate Methods
+    
     private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
     {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage //2
@@ -231,6 +204,28 @@ class AddUpdateViewController: UIViewController, UIImagePickerControllerDelegate
         
     }
     
+    // MARK: - Other Methods.
+
+    func check(forBlanks textfield: UITextField) -> Bool {
+        let rawString: String? = textfield.text
+        let whitespace = CharacterSet.whitespacesAndNewlines
+        let trimmed: String? = rawString?.trimmingCharacters(in: whitespace)
+        if (trimmed?.count ?? 0) == 0 {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    func check(forValidEmail textfield: UITextField) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        print(emailTest.evaluate(with: textfield.text!))
+        return emailTest.evaluate(with: textfield.text!)
+    }
+    
     func showAlert(withTitleMessageAndAction title:String, message:String , action: Bool) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
@@ -246,5 +241,18 @@ class AddUpdateViewController: UIViewController, UIImagePickerControllerDelegate
         self.present(alert, animated: true, completion: nil)
     }
     
+    func configureImageView() {
+        
+        imgUserImg.layer.cornerRadius = imgUserImg.frame.size.width / 2
+        imgUserImg.layer.borderWidth = 3.0
+        imgUserImg.layer.borderColor = UIColor.lightGray.cgColor
+        
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddUpdateViewController.handleTap(_:)))
+        tapGesture.delegate = self
+        tapGesture.numberOfTapsRequired = 1
+        tapGesture.numberOfTouchesRequired = 1
+        
+        imgUserImg.addGestureRecognizer(tapGesture)
+    }
     
 }
